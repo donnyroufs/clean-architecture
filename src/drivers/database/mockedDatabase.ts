@@ -1,5 +1,4 @@
-import { injectable } from "inversify";
-import { IDatabase } from "./IDatabase";
+import { IDatabase } from "../../entrypoint/interfaces/IDatabase";
 
 const data = {
   User: [

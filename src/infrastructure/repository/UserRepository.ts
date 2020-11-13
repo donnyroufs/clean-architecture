@@ -1,6 +1,6 @@
 import { Database } from "./../../drivers/database/Database";
 import { types } from "../../configuration/types";
-import { IDatabase } from "../../drivers/database/IDatabase";
+import { IDatabase } from "../../entrypoint/interfaces/IDatabase";
 import { IUserRepository } from "./../../application/interface/repository/IUserRepository";
 import { inject, injectable, interfaces } from "inversify";
 import { User } from "@/domain/UserEntity";
