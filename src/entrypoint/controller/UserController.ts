@@ -11,7 +11,7 @@ import {
 } from "inversify-express-utils";
 import * as express from "express";
 import { UserServiceLocator } from "../../configuration/usecase/UserServiceLocator";
-import { IUserLoginRequestDto } from "@/application/interfaces/dto/IUserLoginRequestDto";
+import { UserLoginRequestDto } from "../../application/dto/UserLoginRequestDto";
 
 @controller("/user")
 export class UserController {
@@ -26,7 +26,7 @@ export class UserController {
   @httpPost("/:email")
   async login(
     @requestParam("email") email: string,
-    @requestBody() body: IUserLoginRequestDto,
+    @requestBody() body: UserLoginRequestDto,
     @response() res: express.Response
   ) {
     const loginResult = await this.loginUseCase.execute({

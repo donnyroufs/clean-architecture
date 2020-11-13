@@ -1,8 +1,8 @@
-import { IUserLoginResponseDto } from "../dto/IUserLoginResponseDto";
-import { IUserLoginRequestDto } from "../dto/IUserLoginRequestDto";
+import { UserLoginResponseDto } from "../../dto/UserLoginResponseDto";
+import { UserLoginRequestDto } from "../../dto/UserLoginRequestDto";
 
 export interface ILoginUseCase {
   execute(
-    userCredentials: IUserLoginRequestDto
-  ): Promise<IUserLoginResponseDto | null>;
+    userCredentials: UserLoginRequestDto
+  ): Promise<UserLoginResponseDto | null>;
 }

@@ -1,5 +1,7 @@
-export interface User {
-  id?: number;
-  email: string;
-  password?: string;
+import { Expose } from "class-transformer";
+
+export class User {
+  @Expose() id: number;
+  @Expose() email: string;
+  @Expose() password?: string;
 }

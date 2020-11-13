@@ -16,4 +16,5 @@ container
   .bind<UserRepository>(types.IUserRepository)
   .to(UserRepository)
 
+
 export { container };

@@ -1,14 +1,15 @@
-import { IUserLoginResponseDto } from "../interfaces/dto/IUserLoginResponseDto";
+import { UserLoginResponseDto } from "../dto/UserLoginResponseDto";
 import { ILoginUseCase } from "../interfaces/usecase/ILoginUseCase";
-import { IUserLoginRequestDto } from "../interfaces/dto/IUserLoginRequestDto";
+import { UserLoginRequestDto } from "../dto/UserLoginRequestDto";
 import { IUserRepository } from "../interfaces/repository/IUserRepository";
+import { mapper } from "../../configuration/helpers/mapper";
 
 export class LoginUseCase implements ILoginUseCase {
   constructor(private readonly userRepository: IUserRepository) {}
 
   async execute(
-    userCredentials: IUserLoginRequestDto
-  ): Promise<IUserLoginResponseDto> {
+    userCredentials: UserLoginRequestDto
+  ): Promise<UserLoginResponseDto> {
     const foundUser = await this.userRepository.findOne(userCredentials.email);
 
     if (!foundUser) {
@@ -17,12 +18,8 @@ export class LoginUseCase implements ILoginUseCase {
 
     // TODO: inject service for password comparison
     // TODO: Inject service for token creation
-    const token = "hi";
+    const token = "jwt-token-or-something";
 
-    //? How to map this to a dto?
-    return {
-      email: foundUser.email,
-      token: token,
-    };
+    return mapper(UserLoginResponseDto, { ...foundUser, token });
   }
 }
