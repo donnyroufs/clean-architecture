@@ -1,5 +1,7 @@
 import "reflect-metadata";
 
+import { Database } from './../drivers/database/Database';
+
 import { UserService } from "./../application/service/UserService";
 import { UserRepository } from './../infrastructure/repository/UserRepository';
 
@@ -16,5 +18,8 @@ container
   .bind<UserRepository>(types.IUserRepository)
   .to(UserRepository)
 
+container
+  .bind<Database>(types.Database)
+  .toConstructor(Database)
 
 export { container };
