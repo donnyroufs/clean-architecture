@@ -5,7 +5,3 @@ export class UserLoginRequestDto {
   @Expose() password: string;
 }
 
-// export interface IUserLoginRequestDto {
-//   email?: string;
-//   password: string;
-// }

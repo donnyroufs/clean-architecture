@@ -5,7 +5,3 @@ export class UserLoginResponseDto {
   @Expose() token?: string;
 }
 
-// export interface IUserLoginResponseDto {
-//   email: string;
-//   token?: string;
-// }
