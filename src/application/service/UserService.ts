@@ -1,3 +1,4 @@
+import { IUserService } from "./../interface/service/IUserService";
 import { types } from "../../configuration/types";
 import { inject, injectable } from "inversify";
 import { UserLoginRequestDto } from "../dto/UserLoginRequestDto";
@@ -5,7 +6,7 @@ import { IUserRepository } from "../interface/repository/IUserRepository";
 import { LoginUseCase } from "../usecase/LoginUseCase";
 
 @injectable()
-export class UserService {
+export class UserService implements IUserService {
   constructor(
     @inject(types.IUserRepository) private repository: IUserRepository
   ) {}
