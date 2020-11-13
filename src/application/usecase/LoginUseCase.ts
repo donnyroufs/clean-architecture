@@ -1,7 +1,7 @@
 import { UserLoginResponseDto } from "../dto/UserLoginResponseDto";
-import { ILoginUseCase } from "../interfaces/usecase/ILoginUseCase";
+import { ILoginUseCase } from "../interface/usecase/ILoginUseCase";
 import { UserLoginRequestDto } from "../dto/UserLoginRequestDto";
-import { IUserRepository } from "../interfaces/repository/IUserRepository";
+import { IUserRepository } from "../interface/repository/IUserRepository";
 import { mapper } from "../../configuration/helpers/mapper";
 
 export class LoginUseCase implements ILoginUseCase {

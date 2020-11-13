@@ -1,4 +1,4 @@
-import { IUserRepository } from "./../../application/interfaces/repository/IUserRepository";
+import { IUserRepository } from "./../../application/interface/repository/IUserRepository";
 import { injectable } from "inversify";
 import { User } from "@/domain/UserEntity";
 // Should be injected

@@ -1,4 +1,3 @@
-import { ILoginUseCase } from "./../../application/interfaces/usecase/ILoginUseCase";
 import { inject } from "inversify";
 import { types } from "../../configuration/types";
 import {
@@ -10,18 +9,12 @@ import {
   requestBody,
 } from "inversify-express-utils";
 import * as express from "express";
-import { UserServiceLocator } from "../../configuration/usecase/UserServiceLocator";
 import { UserLoginRequestDto } from "../../application/dto/UserLoginRequestDto";
+import { UserService } from "../../application/service/UserService";
 
 @controller("/user")
 export class UserController {
-  private readonly loginUseCase: ILoginUseCase;
-
-  constructor(
-    @inject(types.UserServiceLocator) serviceLocator: UserServiceLocator
-  ) {
-    this.loginUseCase = serviceLocator.getLoginUseCase();
-  }
+  @inject(types.UserService) private readonly userService: UserService;
 
   @httpPost("/:email")
   async login(
@@ -29,7 +22,7 @@ export class UserController {
     @requestBody() body: UserLoginRequestDto,
     @response() res: express.Response
   ) {
-    const loginResult = await this.loginUseCase.execute({
+    const loginResult = await this.userService.login({
       email,
       password: body.password,
     });
