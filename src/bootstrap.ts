@@ -13,7 +13,16 @@ server.setConfig((application: express.Application) => {
   application.use(express.json());
 });
 
+server.setErrorConfig((app) => {
+  app.use((message: string, req, res, next) => {
+    res.status(500).json({
+      message,
+    });
+  });
+});
+
 const app = server.build();
+
 
 app.listen(5000, () =>
   console.log(`server is running on http://localhost:5000`)

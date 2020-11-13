@@ -1,3 +1,4 @@
+import { BaseController } from "./BaseController";
 import * as express from "express";
 
 import { UserLoginRequestDto } from "../../application/dto/UserLoginRequestDto";
@@ -11,8 +12,9 @@ import {
   requestBody,
 } from "inversify-express-utils";
 
+
 @controller("/user")
-export class UserController {
+export class UserController extends BaseController {
   @inject(types.UserService) private readonly userService: UserService;
 
   @httpPost("/login")
@@ -20,13 +22,16 @@ export class UserController {
     @requestBody() body: UserLoginRequestDto,
     @response() res: express.Response
   ) {
-
     if (!body.email || !body.password) {
-      return res.status(400).json({ error: "Missing credentials" });
+      return this.notFound();
     }
 
     const loginResult = await this.userService.login(body);
-    
+
+    if (!loginResult) {
+      return this.notAuthorized();
+    }
+
     res.status(201).json(loginResult);
   }
 }
