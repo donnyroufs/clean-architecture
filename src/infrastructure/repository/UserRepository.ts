@@ -3,7 +3,8 @@ import { types } from "../../configuration/types";
 import { IDatabase } from "../../entrypoint/interfaces/IDatabase";
 import { IUserRepository } from "./../../application/interface/repository/IUserRepository";
 import { inject, injectable, interfaces } from "inversify";
-import { User } from "@/domain/UserEntity";
+import { User } from "../../domain/UserEntity";
+import { mapper } from "../../configuration/helpers/mapper";
 
 @injectable()
 export class UserRepository implements IUserRepository {
@@ -15,6 +16,6 @@ export class UserRepository implements IUserRepository {
 
   async findOne(email: string): Promise<User> {
     const foundUser = await this.db.findOne(email);
-    return foundUser;
+    return mapper(User, foundUser);
   }
 }
