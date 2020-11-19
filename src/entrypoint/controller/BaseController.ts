@@ -6,6 +6,7 @@ export class BaseController {
   badRequest(message: string = "Bad Request") {
     return new CustomError(400, message);
   }
+
   notAuthorized(message: string = "Not Authorized") {
     return new CustomError(403, message);
   }
