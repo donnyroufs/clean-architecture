@@ -1,15 +1,15 @@
 {
-    "compilerOptions": {
-        "target": "es5",
-        "lib": ["es6"],
-        "types": ["reflect-metadata"],
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-        "baseUrl": "./src",
-        "paths": {
-            "@/*": ["./*"]
-        }
-    }
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es6"],
+    "types": ["reflect-metadata"],
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+    // "baseUrl": "./src",
+    // "paths": {
+    //   "@/*": ["./*"]
+    // }
+  }
 }

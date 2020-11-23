@@ -4,9 +4,9 @@ export default {
   development: {
     client: "pg",
     connection: {
-      database: process.env.POSTGRES_DB,
-      user: process.env.POSTGRES_USER,
-      password: process.env.POSTGRES_PASSWORD,
+      database: "clean-architecture",
+      user: "postgres",
+      password: "postgres",
     },
     migrations: {
       directory: "./data/migrations",

@@ -1,9 +1,9 @@
 import "reflect-metadata";
 
-import { Database } from './../drivers/database/Database';
+import { Database } from "./../drivers/database/Database";
 
 import { UserService } from "./../application/service/UserService";
-import { UserRepository } from './../infrastructure/repository/UserRepository';
+import { UserRepository } from "./../infrastructure/repository/UserRepository";
 
 import { Container } from "inversify";
 import { types } from "./types";
@@ -16,10 +16,10 @@ container
 
 container
   .bind<UserRepository>(types.IUserRepository)
-  .to(UserRepository)
+  .to(UserRepository);
 
 container
   .bind<Database>(types.Database)
-  .toConstructor(Database)
+  .toConstructor(Database);
 
 export { container };

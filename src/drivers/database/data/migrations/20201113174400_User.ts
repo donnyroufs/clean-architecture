@@ -4,7 +4,7 @@ export async function up(knex: Knex): Promise<void> {
   return knex.schema.createTable("User", (table) => {
     table.increments().notNullable();
     table.string("email");
-    table.boolean("password");
+    table.string("password");
     table.timestamps(true, true);
   });
 }

@@ -12,7 +12,6 @@ import {
   requestBody,
 } from "inversify-express-utils";
 
-
 @controller("/user")
 export class UserController extends BaseController {
   @inject(types.UserService) private readonly userService: UserService;
@@ -23,7 +22,7 @@ export class UserController extends BaseController {
     @response() res: express.Response
   ) {
     if (!body.email || !body.password) {
-      return this.notFound();
+      return this.badRequest();
     }
 
     const loginResult = await this.userService.login(body);

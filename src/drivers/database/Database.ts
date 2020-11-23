@@ -3,7 +3,7 @@ import "dotenv/config";
 import { injectable } from "inversify";
 import * as knex from "knex";
 import knexfile from "./knexfile";
-import { IDatabase } from "../../entrypoint/interfaces/IDatabase";
+import { IDatabase } from "../../infrastructure/interfaces/IDatabase";
 
 const env = process.env.NODE_ENV;
 
@@ -18,7 +18,7 @@ export class Database implements IDatabase {
     this.entity = entity;
   }
 
-  async findOne<T>(query: T): Promise<any> {
-    return this.client(this.entity).select("*")[0];
+  async findOne(query: object): Promise<any> {
+    return this.client(this.entity).where(query).first().select("*");
   }
 }
