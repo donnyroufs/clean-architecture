@@ -1,4 +1,4 @@
-export class CustomError extends Error {
+export class HttpException extends Error {
   public message: string;
   public statusCode: number;
 

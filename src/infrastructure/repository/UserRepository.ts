@@ -3,8 +3,7 @@ import { types } from "../../configuration/types";
 import { IDatabase } from "../interfaces/IDatabase";
 import { IUserRepository } from "./../../application/interface/repository/IUserRepository";
 import { inject, injectable, interfaces } from "inversify";
-import { User } from "../../domain/UserEntity";
-import { CustomError } from "../../entrypoint/error/CustomError";
+import { IUserEntity } from "../../domain/interface/IUserEntity";
 
 @injectable()
 export class UserRepository implements IUserRepository {
@@ -14,13 +13,8 @@ export class UserRepository implements IUserRepository {
     this.db = new Database("User");
   }
 
-  async findOne(email: string): Promise<User> {
+  async findOne(email: string): Promise<IUserEntity> {
     const foundUser = await this.db.findOne({ email });
-
-    if (!foundUser) {
-      throw new CustomError(404, "User does not exist");
-    }
-
-    return new User(foundUser);
+    return foundUser;
   }
 }

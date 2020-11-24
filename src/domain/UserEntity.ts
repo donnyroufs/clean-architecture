@@ -1,21 +1,16 @@
-import { ValidationException } from "./exception/ValidationException";
+import { IUserEntity } from "./interface/IUserEntity";
+import { DomainValidationException } from "./exception/DomainValidationException";
 import { BaseEntity } from "./BaseEntity";
-import { Expose } from "class-transformer";
 
-// export class User {
-//   @Expose() id: number;
-//   @Expose() email: string;
-//   @Expose() password?: string;
-// }
-
-export class User extends BaseEntity {
+export class User extends BaseEntity implements IUserEntity {
   public id: number;
   public email: string;
   public password?: string;
+  private hashed: boolean;
 
   constructor(
-    { id, email, password, ...timestamps }: User,
-    private hashed: boolean = false
+    { id, email, password, ...timestamps }: IUserEntity,
+    hashed: boolean = false
   ) {
     super(timestamps);
 
@@ -29,17 +24,13 @@ export class User extends BaseEntity {
   }
 
   private validation(id: number, email: string, password: string) {
-    if (typeof id === "string") {
-      throw new ValidationException("id must be of type number", "id field");
-    }
-
     if (!email.includes("@")) {
-      throw new ValidationException("Email is not valid", "email field");
+      throw new DomainValidationException("Email is not valid", "email field");
     }
 
     if (!this.hashed) {
       if (password.length < 6 || password.length > 32) {
-        throw new ValidationException(
+        throw new DomainValidationException(
           "Password must be between 6 and 32 characters",
           "password field"
         );

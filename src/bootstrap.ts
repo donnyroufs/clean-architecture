@@ -18,13 +18,14 @@ server.setConfig((application: express.Application) => {
 
 server.setErrorConfig((app) => {
   app.use((message: string, req, res, next) => {
+    console.log(message);
     res.status(500).json({
       message,
     });
   });
 });
 
-const app = server.build();
+export const app = server.build();
 
 app.listen(5000, () =>
   console.log(`server is running on http://localhost:5000`)

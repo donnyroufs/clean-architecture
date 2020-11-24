@@ -1,3 +1,4 @@
+import { DomainServiceException } from "./../../domain/exception/DomainServiceException";
 import { User } from "../../domain/UserEntity";
 import { UserLoginResponseDto } from "../dto/UserLoginResponseDto";
 import { ILoginUseCase } from "../interface/usecase/ILoginUseCase";
@@ -10,13 +11,15 @@ export class LoginUseCase implements ILoginUseCase {
   async execute(
     userCredentials: UserLoginRequestDto
   ): Promise<UserLoginResponseDto> {
-    const user = new User(
-      await this.userRepository.findOne(userCredentials.email)
-    );
+    const userData = await this.userRepository.findOne(userCredentials.email);
 
-    // TODO: inject service for password comparison
-    // TODO: Inject service for token creation
-    // TODO: Throw proper errors
+    if (!userData) {
+      throw new DomainServiceException("Missing user", "user repository");
+    }
+
+    const user = new User(userData);
+
+    // Inject auth service
     const token = "jwt-token-or-something";
 
     return new UserLoginResponseDto({ ...user, token });

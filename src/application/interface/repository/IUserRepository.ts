@@ -1,5 +1,5 @@
-import { User } from "../../../domain/UserEntity";
+import { IUserEntity } from "../../../domain/interface/IUserEntity";
 
 export interface IUserRepository {
-  findOne(email: string): Promise<User | null>;
+  findOne(email: string): Promise<IUserEntity | null>;
 }
