@@ -26,6 +26,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "inversify-express-utils": "^6.3.2",
+    "jsonwebtoken": "^8.5.1",
     "knex": "^0.21.12",
     "morgan": "^1.10.0",
     "pg": "^8.5.1",

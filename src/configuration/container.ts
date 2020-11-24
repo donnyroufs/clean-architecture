@@ -1,3 +1,4 @@
+import { AuthService } from './../infrastructure/service/AuthService';
 import "reflect-metadata";
 
 import { Database } from "./../drivers/database/Database";
@@ -21,5 +22,9 @@ container
 container
   .bind<Database>(types.Database)
   .toConstructor(Database);
+  
+container
+  .bind<AuthService>(types.AuthService)
+  .to(AuthService)
 
 export { container };

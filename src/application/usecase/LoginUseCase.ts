@@ -4,9 +4,13 @@ import { UserLoginResponseDto } from "../dto/UserLoginResponseDto";
 import { ILoginUseCase } from "../interface/usecase/ILoginUseCase";
 import { UserLoginRequestDto } from "../dto/UserLoginRequestDto";
 import { IUserRepository } from "../interface/repository/IUserRepository";
+import { IAuthService } from "../interface/service/IAuthService";
 
 export class LoginUseCase implements ILoginUseCase {
-  constructor(private readonly userRepository: IUserRepository) {}
+  constructor(
+    private readonly userRepository: IUserRepository,
+    private readonly authService: IAuthService
+  ) {}
 
   async execute(
     userCredentials: UserLoginRequestDto
@@ -17,10 +21,21 @@ export class LoginUseCase implements ILoginUseCase {
       throw new DomainServiceException("Missing user", "user repository");
     }
 
-    const user = new User(userData);
+    const user = new User(userData, true);
 
-    // Inject auth service
-    const token = "jwt-token-or-something";
+    const validPassword = this.authService.comparePasswords(
+      userCredentials.password,
+      user.password
+    );
+
+    if (!validPassword) {
+      throw new DomainServiceException(
+        "User credentials are not valid",
+        "auth service"
+      );
+    }
+
+    const token = this.authService.generateToken(user);
 
     return new UserLoginResponseDto({ ...user, token });
   }
