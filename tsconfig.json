@@ -1,16 +1,23 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
     "target": "ES2020",
     "lib": ["es6"],
     "typeRoots": ["node_modules/@types"],
     "types": ["reflect-metadata", "jest"],
     "module": "CommonJS",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-    // "baseUrl": "./src",
-    // "paths": {
-    //   "@/*": ["./*"]
-    // }
-  }
+    "emitDecoratorMetadata": true,
+    "baseUrl": "./",
+    "paths": {
+      "@core/*": ["src/core/*"],
+      "@app/*": ["src/core/app/*"],
+      "@domain/*": ["src/core/domain/*"],
+      "@infra/*": ["src/infrastructure/*"],
+      "@config/*": ["src/configuration/*"],
+      "@presentation/*": ["src/presentation/*"]
+    }
+  },
+  "include": ["./**/*"]
 }

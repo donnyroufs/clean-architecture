@@ -1,0 +1,17 @@
+{
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@core/*": ["./src/core/*"],
+          "@app/*": ["./src/core/app/*"],
+          "@domain/*": ["./src/core/domain/*"],
+          "@infra/*": ["./src/infrastructure/*"],
+          "@config/*": ["./src/configuration/*"],
+          "@presentation/*": ["./src/presentation/*"]
+        }
+      }
+    ]
+  ]
+}

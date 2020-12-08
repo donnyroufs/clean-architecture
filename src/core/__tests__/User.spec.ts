@@ -1,6 +1,6 @@
-import { IUserEntity } from "./../interface/IUserEntity";
-import { DomainValidationException } from "../exception/DomainValidationException";
-import { User } from "../UserEntity";
+import { IUserEntity } from "@core/domain/interface/IUserEntity";
+import { DomainValidationException } from "@core/common/exception/DomainValidationException";
+import { User } from "@core/domain/UserEntity";
 
 describe("create a new user entity", () => {
   let user;
