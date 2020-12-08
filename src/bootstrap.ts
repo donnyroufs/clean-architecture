@@ -7,7 +7,7 @@ import { container } from "./configuration/container";
 import * as morgan from "morgan";
 
 // HTTP Controllers
-import "./entrypoint/controller/UserController";
+import "./presentation/web/controller/UserController";
 
 const server = new InversifyExpressServer(container);
 

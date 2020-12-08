@@ -3,7 +3,7 @@ import "dotenv/config";
 import { injectable } from "inversify";
 import * as knex from "knex";
 import knexfile from "./knexfile";
-import { IDatabase } from "../../infrastructure/interfaces/IDatabase";
+import { IDatabase } from "../../../infrastructure/interfaces/IDatabase";
 
 const env = process.env.NODE_ENV;
 

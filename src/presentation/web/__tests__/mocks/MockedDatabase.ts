@@ -1,11 +1,4 @@
-import { IDatabase } from "../../../infrastructure/interfaces/IDatabase";
-
-const data = {
-  User: [
-    { id: 1, email: "john@test.com", password: "123456" },
-    { id: 2, email: "doe@test.com", password: "123456" },
-  ],
-};
+import { IDatabase } from "../../../../infrastructure/interfaces/IDatabase";
 
 export class MockedDatabase implements IDatabase {
   private data: any = {

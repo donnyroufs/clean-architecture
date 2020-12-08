@@ -1,13 +1,14 @@
-import { AuthService } from './../infrastructure/service/AuthService';
 import "reflect-metadata";
 
-import { Database } from "../drivers/database/Database";
+import { Database } from "../infrastructure/drivers/database/Database";
+
+import { AuthService } from './../infrastructure/service/AuthService';
 
 import { UserService } from "../core/application/service/UserService";
 import { UserRepository } from "./../infrastructure/repository/UserRepository";
 
 import { Container } from "inversify";
-import { types } from "./types";
+import { types } from "../core/common/types";
 
 const container = new Container();
 
