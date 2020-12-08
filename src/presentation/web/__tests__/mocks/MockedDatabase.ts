@@ -1,4 +1,4 @@
-import { IDatabase } from "../../../../infrastructure/interfaces/IDatabase";
+import { IDatabase } from "../../../../infrastructure/interface/IDatabase";
 
 export class MockedDatabase implements IDatabase {
   private data: any = {

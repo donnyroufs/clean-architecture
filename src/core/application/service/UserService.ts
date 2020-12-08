@@ -1,21 +1,19 @@
-import { IUserService } from "../../common/interface/service/IUserService";
+import { IUserService } from "./interface/IUserService";
 import { types } from "../../common/types";
 import { inject, injectable } from "inversify";
 import { UserLoginRequestDto } from "../dto/UserLoginRequestDto";
 import { IUserRepository } from "../../common/interface/repository/IUserRepository";
 import { LoginUseCase } from "../usecase/LoginUseCase";
 import { IAuthService } from "../../common/interface/service/IAuthService";
+import { ILoginUseCase } from "../../common/interface/usecase/ILoginUseCase";
 
 @injectable()
 export class UserService implements IUserService {
   constructor(
-    @inject(types.IUserRepository) private repository: IUserRepository,
-    @inject(types.AuthService) private authService: IAuthService
+    @inject(types.ILoginUseCase) private loginUseCase: ILoginUseCase
   ) {}
 
   public login(userCredentials: UserLoginRequestDto) {
-    return new LoginUseCase(this.repository, this.authService).execute(
-      userCredentials
-    );
+    return this.loginUseCase.execute(userCredentials);
   }
 }

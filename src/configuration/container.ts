@@ -1,5 +1,8 @@
 import "reflect-metadata";
 
+import { IUserService } from './../core/application/service/interface/IUserService';
+import { LoginUseCase } from './../core/application/usecase/LoginUseCase';
+
 import { Database } from "../infrastructure/drivers/database/Database";
 
 import { AuthService } from './../infrastructure/service/AuthService';
@@ -9,23 +12,35 @@ import { UserRepository } from "./../infrastructure/repository/UserRepository";
 
 import { Container } from "inversify";
 import { types } from "../core/common/types";
+import { ILoginUseCase } from "../core/common/interface/usecase/ILoginUseCase";
+import { IUserRepository } from '../core/common/interface/repository/IUserRepository';
+import { IDatabase } from '../infrastructure/interface/IDatabase';
+import { IAuthService } from '../core/common/interface/service/IAuthService';
 
 const container = new Container();
 
 container
-  .bind<UserService>(types.UserService)
-  .to(UserService);
+  .bind<IUserService>(types.IUserService)
+  .to(UserService)
+  .inSingletonScope();
 
 container
-  .bind<UserRepository>(types.IUserRepository)
-  .to(UserRepository);
+  .bind<IUserRepository>(types.IUserRepository)
+  .to(UserRepository)
+  .inSingletonScope();
 
 container
-  .bind<Database>(types.Database)
-  .toConstructor(Database);
+  .bind<IDatabase>(types.IDatabase)
+  .toConstructor(Database)
   
 container
-  .bind<AuthService>(types.AuthService)
+  .bind<IAuthService>(types.IAuthService)
   .to(AuthService)
+  .inSingletonScope();
+
+container
+  .bind<ILoginUseCase>(types.ILoginUseCase)
+  .to(LoginUseCase)
+  .inSingletonScope()
 
 export { container };

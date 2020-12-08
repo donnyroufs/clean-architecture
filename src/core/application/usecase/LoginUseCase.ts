@@ -5,11 +5,14 @@ import { ILoginUseCase } from "../../common/interface/usecase/ILoginUseCase";
 import { UserLoginRequestDto } from "../dto/UserLoginRequestDto";
 import { IUserRepository } from "../../common/interface/repository/IUserRepository";
 import { IAuthService } from "../../common/interface/service/IAuthService";
+import { inject, injectable } from "inversify";
+import { types } from "../../common/types";
 
+@injectable()
 export class LoginUseCase implements ILoginUseCase {
   constructor(
-    private readonly userRepository: IUserRepository,
-    private readonly authService: IAuthService
+    @inject(types.IUserRepository) private userRepository: IUserRepository,
+    @inject(types.IAuthService) private authService: IAuthService
   ) {}
 
   async execute(

@@ -1,4 +1,4 @@
-import { IUserEntity } from "../common/interface/entity/IUserEntity";
+import { IUserEntity } from "./interface/IUserEntity";
 import { DomainValidationException } from "../common/exception/DomainValidationException";
 import { BaseEntity } from "./BaseEntity";
 

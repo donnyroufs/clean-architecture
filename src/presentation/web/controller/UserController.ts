@@ -14,7 +14,7 @@ import {
 
 @controller("/user")
 export class UserController extends BaseController {
-  @inject(types.UserService) private readonly userService: UserService;
+  @inject(types.IUserService) private readonly userService: UserService;
 
   @httpPost("/login")
   async login(

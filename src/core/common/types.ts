@@ -1,6 +1,7 @@
 export enum types {
   IUserRepository = "IUserRepository",
-  UserService = "UserService",
-  Database = "Database",
-  AuthService = "AuthService",
+  IUserService = "IUserService",
+  IDatabase = "IDatabase",
+  IAuthService = "IAuthService",
+  ILoginUseCase = "ILoginUseCase",
 }

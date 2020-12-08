@@ -4,7 +4,6 @@ import { IAuthService } from "../service/IAuthService";
 
 export interface ILoginUseCase {
   execute(
-    userCredentials: UserLoginRequestDto,
-    AuthService: IAuthService
+    userCredentials: UserLoginRequestDto
   ): Promise<UserLoginResponseDto | null>;
 }
