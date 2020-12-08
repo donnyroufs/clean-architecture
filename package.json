@@ -4,8 +4,8 @@
   "main": "bootstrap.ts",
   "scripts": {
     "run:dev": "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/bootstrap.ts",
-    "make:migration": "knex migrate:make --migrations-directory ./src/drivers/database/data/migrations -x ts ${NAME}",
-    "run:migration": "knex --knexfile ./src/knexfile.ts migrate:latest"
+    "make:migration": "knex migrate:make --migrations-directory ./src/infrastructure/drivers/database/data/migrations -x ts ${NAME}",
+    "run:migration": "knex --knexfile ./src/infrastructure/drivers/database/knexfile.ts migrate:latest"
   },
   "license": "MIT",
   "devDependencies": {
