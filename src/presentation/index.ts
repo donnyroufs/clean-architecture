@@ -1,1 +1,1 @@
-export * as server from "./web/server";
+export * as api from "./api/server";

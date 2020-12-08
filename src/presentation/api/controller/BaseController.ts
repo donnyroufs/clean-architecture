@@ -1,4 +1,4 @@
-import { HttpException } from "./../exception/HttpException";
+import { HttpException } from "../exception/HttpException";
 import { injectable } from "inversify";
 
 @injectable()

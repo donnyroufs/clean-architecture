@@ -1,8 +1,8 @@
-import { MockedDatabase } from "./../mocks/MockedDatabase";
+import { MockedDatabase } from "../mocks/MockedDatabase";
 import "reflect-metadata";
 
-import { app } from "../../../bootstrap";
-import { UserController } from "./../../controller/UserController";
+import { app } from "../../server";
+import { UserController } from "../../controller/UserController";
 import * as supertest from "supertest";
 
 describe("User Controller", () => {

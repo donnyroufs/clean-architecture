@@ -15,7 +15,6 @@ server.setConfig((application: express.Application) => {
 
 server.setErrorConfig((app) => {
   app.use((message: string, req, res, next) => {
-    console.log(message);
     res.status(500).json({
       message,
     });

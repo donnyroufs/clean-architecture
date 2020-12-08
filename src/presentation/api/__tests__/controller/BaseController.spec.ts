@@ -1,6 +1,6 @@
 import "reflect-metadata";
-import { HttpException } from "./../../exception/HttpException";
-import { BaseController } from "./../../controller/BaseController";
+import { HttpException } from "../../exception/HttpException";
+import { BaseController } from "../../controller/BaseController";
 
 describe("Base controller", () => {
   let baseController = new BaseController();
