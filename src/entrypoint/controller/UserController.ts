@@ -1,8 +1,8 @@
 import { BaseController } from "./BaseController";
 import * as express from "express";
 
-import { UserLoginRequestDto } from "../../application/dto/UserLoginRequestDto";
-import { UserService } from "../../application/service/UserService";
+import { UserLoginRequestDto } from "../../core/application/dto/UserLoginRequestDto";
+import { UserService } from "../../core/application/service/UserService";
 import { inject } from "inversify";
 import { types } from "../../configuration/types";
 import {

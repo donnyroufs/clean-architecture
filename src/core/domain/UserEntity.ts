@@ -1,5 +1,5 @@
-import { IUserEntity } from "./interface/IUserEntity";
-import { DomainValidationException } from "./exception/DomainValidationException";
+import { IUserEntity } from "../common/interface/entity/IUserEntity";
+import { DomainValidationException } from "../common/exception/DomainValidationException";
 import { BaseEntity } from "./BaseEntity";
 
 export class User extends BaseEntity implements IUserEntity {

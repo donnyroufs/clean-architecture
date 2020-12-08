@@ -1,5 +1,5 @@
-import { UserLoginResponseDto } from "../../dto/UserLoginResponseDto";
-import { UserLoginRequestDto } from "../../dto/UserLoginRequestDto";
+import { UserLoginResponseDto } from "../../../application/dto/UserLoginResponseDto";
+import { UserLoginRequestDto } from "../../../application/dto/UserLoginRequestDto";
 import { IAuthService } from "../service/IAuthService";
 
 export interface ILoginUseCase {

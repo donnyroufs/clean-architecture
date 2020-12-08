@@ -1,6 +1,7 @@
-import { AuthValidationException } from "../exception/AuthValidationException";
-import { IAuthService } from "../../application/interface/service/IAuthService";
+import { IAuthService } from "../../core/common/interface/service/IAuthService";
 import { injectable } from "inversify";
+
+// ? Should be injected?
 import * as jwt from "jsonwebtoken";
 
 @injectable()

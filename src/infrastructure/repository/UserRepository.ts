@@ -1,9 +1,9 @@
 import { Database } from "./../../drivers/database/Database";
 import { types } from "../../configuration/types";
 import { IDatabase } from "../interfaces/IDatabase";
-import { IUserRepository } from "./../../application/interface/repository/IUserRepository";
+import { IUserRepository } from "../../core/common/interface/repository/IUserRepository";
 import { inject, injectable, interfaces } from "inversify";
-import { IUserEntity } from "../../domain/interface/IUserEntity";
+import { IUserEntity } from "../../core/common/interface/entity/IUserEntity";
 
 @injectable()
 export class UserRepository implements IUserRepository {

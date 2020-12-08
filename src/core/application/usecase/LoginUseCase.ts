@@ -1,10 +1,10 @@
-import { DomainServiceException } from "./../../domain/exception/DomainServiceException";
+import { DomainServiceException } from "../../common/exception/DomainServiceException";
 import { User } from "../../domain/UserEntity";
 import { UserLoginResponseDto } from "../dto/UserLoginResponseDto";
-import { ILoginUseCase } from "../interface/usecase/ILoginUseCase";
+import { ILoginUseCase } from "../../common/interface/usecase/ILoginUseCase";
 import { UserLoginRequestDto } from "../dto/UserLoginRequestDto";
-import { IUserRepository } from "../interface/repository/IUserRepository";
-import { IAuthService } from "../interface/service/IAuthService";
+import { IUserRepository } from "../../common/interface/repository/IUserRepository";
+import { IAuthService } from "../../common/interface/service/IAuthService";
 
 export class LoginUseCase implements ILoginUseCase {
   constructor(

@@ -1,10 +1,10 @@
-import { IUserService } from "./../interface/service/IUserService";
-import { types } from "../../configuration/types";
+import { IUserService } from "../../common/interface/service/IUserService";
+import { types } from "../../common/types";
 import { inject, injectable } from "inversify";
 import { UserLoginRequestDto } from "../dto/UserLoginRequestDto";
-import { IUserRepository } from "../interface/repository/IUserRepository";
+import { IUserRepository } from "../../common/interface/repository/IUserRepository";
 import { LoginUseCase } from "../usecase/LoginUseCase";
-import { IAuthService } from "../interface/service/IAuthService";
+import { IAuthService } from "../../common/interface/service/IAuthService";
 
 @injectable()
 export class UserService implements IUserService {

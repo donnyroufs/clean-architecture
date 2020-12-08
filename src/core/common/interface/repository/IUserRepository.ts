@@ -1,4 +1,4 @@
-import { IUserEntity } from "../../../domain/interface/IUserEntity";
+import { IUserEntity } from "../entity/IUserEntity";
 
 export interface IUserRepository {
   findOne(email: string): Promise<IUserEntity | null>;

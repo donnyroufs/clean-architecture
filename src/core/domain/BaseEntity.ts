@@ -1,4 +1,5 @@
-import { IBaseEntity } from "./interface/IBaseEntity";
+import { IBaseEntity } from "../common/interface/entity/IBaseEntity";
+
 export class BaseEntity implements IBaseEntity {
   public created_at?: string;
   public updated_at?: string;
