@@ -1,12 +1,12 @@
-import { DomainServiceException } from "../../common/exception/DomainServiceException";
-import { User } from "../../domain/UserEntity";
-import { UserLoginResponseDto } from "../dto/UserLoginResponseDto";
-import { ILoginUseCase } from "../../common/interface/usecase/ILoginUseCase";
-import { UserLoginRequestDto } from "../dto/UserLoginRequestDto";
-import { IUserRepository } from "../../common/interface/repository/IUserRepository";
-import { IAuthService } from "../../common/interface/service/IAuthService";
+import { DomainServiceException } from "@core/common/exception/DomainServiceException";
+import { User } from "@domain/UserEntity";
+import { UserLoginResponseDto } from "@app/dto/UserLoginResponseDto";
+import { ILoginUseCase } from "@core/common/interface/usecase/ILoginUseCase";
+import { UserLoginRequestDto } from "@app/dto/UserLoginRequestDto";
+import { IUserRepository } from "@core/common/interface/repository/IUserRepository";
+import { IAuthService } from "@core/common/interface/service/IAuthService";
 import { inject, injectable } from "inversify";
-import { types } from "../../common/types";
+import { types } from "@core/common/types";
 
 @injectable()
 export class LoginUseCase implements ILoginUseCase {

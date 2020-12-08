@@ -1,4 +1,4 @@
-import { UserLoginRequestDto } from "../../../application/dto/UserLoginRequestDto";
+import { UserLoginRequestDto } from "@app/dto/UserLoginRequestDto";
 
 export interface IUserService {
   login(userCredentials: UserLoginRequestDto);

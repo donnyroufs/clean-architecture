@@ -1,4 +1,4 @@
-import { IAuthService } from "../../core/common/interface/service/IAuthService";
+import { IAuthService } from "@core/common/interface/service/IAuthService";
 import { injectable } from "inversify";
 
 // ? Should be injected?
