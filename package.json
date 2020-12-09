@@ -23,7 +23,8 @@
     "supertest": "^6.0.1",
     "ts-jest": "^26.4.4",
     "ts-node-dev": "^1.0.0-pre.49",
-    "tsconfig-paths": "^3.9.0"
+    "tsconfig-paths": "^3.9.0",
+    "tsconfig-paths-jest": "^0.0.1"
   },
   "dependencies": {
     "express": "^4.17.1",
