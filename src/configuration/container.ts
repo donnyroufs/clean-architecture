@@ -12,7 +12,6 @@ import { IUserService } from "@app/service/interface/IUserService";
 import { LoginUseCase } from "@app/usecase/LoginUseCase";
 
 import { Database } from "@infra/drivers/database/Database";
-import { MockedDatabase } from "@presentation/api/__tests__/mocks/MockedDatabase"
 import { IDatabase } from "@infra/interface/IDatabase";
 import { AuthService } from "@infra/service/AuthService";
 import { UserRepository } from "@infra/repository/UserRepository";
@@ -31,7 +30,7 @@ container
 
 container
   .bind<IDatabase>(types.IDatabase)
-  .toConstructor(MockedDatabase);
+  .toConstructor(Database);
 
 container
   .bind<IAuthService>(types.IAuthService)
