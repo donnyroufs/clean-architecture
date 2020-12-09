@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "main": "bootstrap.ts",
   "scripts": {
-    "run:dev": "nodemon  --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec 'ts-node' src/bootstrap.ts",
-    "dev": "tsnd —-respawn -—transpile-only -—poll --no-notify src/bootstrap.ts",
+    "run:dev": "ts-node-dev --require tsconfig-paths/register --respawn --transpile-only --poll --no-notify src/bootstrap.ts",
+    "run:prod": "node --require tsconfig-paths/register dist/bootstrap.js",
     "make:migration": "knex migrate:make --migrations-directory ./src/infrastructure/drivers/database/data/migrations -x ts ${NAME}",
     "run:migration": "knex --knexfile ./src/infrastructure/drivers/database/knexfile.ts migrate:latest"
   },
@@ -16,15 +16,14 @@
     "@types/morgan": "^1.9.2",
     "@types/node": "^14.14.7",
     "@types/supertest": "^2.0.10",
-    "babel-plugin-module-resolver": "^4.0.0",
     "dotenv": "^8.2.0",
     "inversify": "^5.0.1",
     "jest": "^26.6.3",
-    "nodemon": "^2.0.6",
     "reflect-metadata": "^0.1.13",
     "supertest": "^6.0.1",
     "ts-jest": "^26.4.4",
-    "ts-node-dev": "^1.0.0-pre.49"
+    "ts-node-dev": "^1.0.0-pre.49",
+    "tsconfig-paths": "^3.9.0"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -33,7 +32,6 @@
     "knex": "^0.21.12",
     "morgan": "^1.10.0",
     "pg": "^8.5.1",
-    "ts-node": "^9.0.0",
     "typescript": "^4.0.5"
   }
 }
