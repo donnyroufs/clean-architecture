@@ -20,6 +20,7 @@ I am starting to get bored and irritated by my MVC like architectures for a REST
 - [x] Add a token/auth service
 - [x] Revisit Database adapter (Where does the interface belong?)
 - [x] Revisit entire folder structure, compare with others.
+- [ ] Write tests for @application
 - [ ] implement the token/auth service so that we can login
 - [ ] Add Register and Logout usecase
 - [ ] Add auth middleware
@@ -27,6 +28,7 @@ I am starting to get bored and irritated by my MVC like architectures for a REST
 - [ ] Basic Crud
 - [ ] Add Like UseCase
 - [ ] How do domain entities work with a database? (can we automate it?)
+- [ ] Make sure everything is tested
 - [ ] Does the auth service belong in application? or should it only have the interface
 - [ ] Be able to build for production
 - [ ] nested folders within presentation should get it's own package.json. (remove modules in root package.json that aint needed)
