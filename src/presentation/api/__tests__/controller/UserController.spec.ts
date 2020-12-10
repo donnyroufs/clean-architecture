@@ -28,34 +28,38 @@ describe("User Controller", () => {
     container = null;
   });
 
-  it("Should send a bad request response when it gets an invalid body", (done) => {
-    request
-      .post("/user/login")
-      .set("Accept", "application/json")
-      .send({ emal: "john@test.com", passwd: "123456" })
-      .expect(400)
-      .end(done);
-  });
+  describe("[POST] /user/login", () => {
+    const route = "/user/login";
 
-  it("Should return a 404 if there is no user found", (done) => {
-    request
-      .post("/user/login")
-      .set("Accept", "application/json")
-      .send({ email: "joh@te.com", password: "123456" })
-      .expect(404)
-      .end(done);
-  });
+    it("Should send a bad request response when it gets an invalid body", (done) => {
+      request
+        .post(route)
+        .set("Accept", "application/json")
+        .send({ emal: "john@test.com", passwd: "123456" })
+        .expect(400)
+        .end(done);
+    });
 
-  it("Should create a new token upon valid credentials", (done) => {
-    request
-      .post("/user/login")
-      .set("Accept", "application/json")
-      .send({ email: "john@test.com", password: "123456" })
-      .expect((res) => {
-        expect(res.status).toBe(201);
-        expect(res.body).toHaveProperty("token");
-        expect(res.body.email).toBe("john@test.com");
-      })
-      .end(done);
+    it("Should return a 404 if there is no user found", (done) => {
+      request
+        .post(route)
+        .set("Accept", "application/json")
+        .send({ email: "joh@te.com", password: "123456" })
+        .expect(404)
+        .end(done);
+    });
+
+    it("Should create a new token upon valid credentials", (done) => {
+      request
+        .post(route)
+        .set("Accept", "application/json")
+        .send({ email: "john@test.com", password: "123456" })
+        .expect((res) => {
+          expect(res.status).toBe(201);
+          expect(res.body).toHaveProperty("token");
+          expect(res.body.email).toBe("john@test.com");
+        })
+        .end(done);
+    });
   });
 });
