@@ -16,17 +16,17 @@ I am starting to get bored and irritated by my MVC like architectures for a REST
 - [x] createdAt/updatedAt fields for entities
 - [x] Write tests
 - [x] Fix Path Aliases
-- [ ] Be able to build for production
-- [ ] nested folders within presentation should get it's own package.json. (remove modules in root package.json that aint needed)
 - [x] Fix Knexfile
 - [x] Add a token/auth service
-- [ ] implement the token/auth service so that we can login
-- [ ] Add auth middleware
-- [ ] Add Register and Logout usecase
-- [ ] Does the service belong in application? or should it only have the interface
 - [x] Revisit Database adapter (Where does the interface belong?)
 - [x] Revisit entire folder structure, compare with others.
-- [ ] How do domain entities work with a database? (can we automate it?)
+- [ ] implement the token/auth service so that we can login
+- [ ] Add Register and Logout usecase
+- [ ] Add auth middleware
 - [ ] Add Post entity
 - [ ] Basic Crud
 - [ ] Add Like UseCase
+- [ ] How do domain entities work with a database? (can we automate it?)
+- [ ] Does the auth service belong in application? or should it only have the interface
+- [ ] Be able to build for production
+- [ ] nested folders within presentation should get it's own package.json. (remove modules in root package.json that aint needed)
