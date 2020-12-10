@@ -11,7 +11,7 @@ I am starting to get bored and irritated by my MVC like architectures for a REST
 - [x] Implement Custom Errors / Exceptions (includes a wrapper)
 - [x] Add Logger
 - [x] Difference between exception and error?
-- [-] Set proper type on database return (managed to do it, but its not dev friendly)
+- [x] Set proper type on database return (managed to do it, but its not dev friendly)
 - [x] throw exceptions in domain
 - [x] createdAt/updatedAt fields for entities
 - [x] Write tests
