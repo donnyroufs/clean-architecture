@@ -1,5 +1,9 @@
-import { IDatabase } from "../../../../infrastructure/interface/IDatabase";
+import "reflect-metadata";
 
+import { injectable } from "inversify";
+import { IDatabase } from "@infra/interface/IDatabase";
+
+@injectable()
 export class MockedDatabase implements IDatabase {
   private data: any = {
     User: [
@@ -26,7 +30,9 @@ export class MockedDatabase implements IDatabase {
     this.entity = entity;
   }
 
-  async findOne<T>(query: T): Promise<any> {
-    return this.data[this.entity].find((entity: any) => entity.email === query);
+  async findOne(query: any): Promise<any> {
+    return this.data[this.entity].find(
+      (entity: any) => entity.email === query.email
+    );
   }
 }
