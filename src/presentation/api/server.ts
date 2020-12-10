@@ -1,6 +1,10 @@
+import "dotenv/config";
+
 import * as express from "express";
+import { HttpException } from "./exception/HttpException";
+
+import { container } from "@config/container";
 import { InversifyExpressServer } from "inversify-express-utils";
-import { container } from "../../configuration/container";
 
 import * as morgan from "morgan";
 
@@ -14,15 +18,19 @@ server.setConfig((application: express.Application) => {
 });
 
 server.setErrorConfig((app) => {
-  app.use((message: string, req, res, next) => {
-    res.status(500).json({
-      message,
-    });
+  app.use((err, req, res, next) => {
+    if (err instanceof HttpException) {
+      return res.status(err.statusCode).json({
+        message: err.message,
+      });
+    }
+
+    return res.status(500).json(err);
   });
 });
 
 export const app = server.build();
 
-app.listen(5000, () =>
-  console.log(`server is running on http://localhost:5000`)
+app.listen(process.env.PORT, () =>
+  console.log(`server is running on http://localhost:${process.env.PORT}`)
 );

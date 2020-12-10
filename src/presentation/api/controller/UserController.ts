@@ -22,14 +22,16 @@ export class UserController extends BaseController {
     @response() res: express.Response
   ) {
     if (!body.email || !body.password) {
-      return this.badRequest();
+      this.badRequest();
     }
 
-    const loginResult = await this.userService.login(body);
-
-    if (!loginResult) {
-      return this.notAuthorized();
-    }
+    const loginResult = await this.userService.login(body).catch((err) => {
+      if (err.message === "Missing user") {
+        this.notFound(err.message);
+      } else {
+        this.notAuthorized(err.message);
+      }
+    });
 
     res.status(201).json(loginResult);
   }
