@@ -21,4 +21,9 @@ export class Database implements IDatabase {
   async findOne(query: object): Promise<any> {
     return this.client(this.entity).where(query).first().select("*");
   }
+
+  async createOne(query: object): Promise<any> {
+    await this.client(this.entity).insert(query);
+    return true;
+  }
 }

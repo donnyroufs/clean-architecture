@@ -20,4 +20,9 @@ export class UserRepository implements IUserRepository {
     const foundUser = await this.db.findOne({ email });
     return foundUser;
   }
+
+  async createOne(user: User) {
+    await this.db.createOne(user);
+    return true;
+  }
 }

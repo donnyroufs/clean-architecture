@@ -1,3 +1,6 @@
+import { DomainValidationException } from "./../../common/exception/DomainValidationException";
+import { RegisterUseCase } from "./../../application/usecase/RegisterUseCase";
+import { IRegisterUseCase } from "./../../common/interface/usecase/IRegisterUseCase";
 import "reflect-metadata";
 
 import { DomainServiceException } from "./../../common/exception/DomainServiceException";
@@ -11,15 +14,13 @@ import { User } from "@config/modules";
 import { IDatabase } from "@infra/interface/IDatabase";
 import { Container, ContainerModule } from "inversify";
 import { types } from "@core/common/types";
-import { ILoginUseCase } from "@core/common/interface/usecase/ILoginUseCase";
-import { LoginUseCase } from "@core/application/usecase/LoginUseCase";
 
 describe("User Controller", () => {
   let container: Container;
-  let loginUseCase: ILoginUseCase;
+  let registerUseCase: IRegisterUseCase;
 
   let credentials: UserLoginRequestDto = {
-    email: "john@test.com",
+    email: "doe@test.com",
     password: "123456",
   };
 
@@ -28,34 +29,33 @@ describe("User Controller", () => {
 
     const Core1 = new ContainerModule((bind) => {
       bind<IDatabase>(types.IDatabase).toConstructor(MockedDatabase);
-      bind<ILoginUseCase>(types.ILoginUseCase).to(LoginUseCase);
+      bind<IRegisterUseCase>(types.IRegisterUseCase).to(RegisterUseCase);
       bind<IAuthService>(types.IAuthService).to(AuthService);
     });
 
     container.load(Core1, User);
 
-    loginUseCase = container.get<ILoginUseCase>(types.ILoginUseCase);
+    registerUseCase = container.get<IRegisterUseCase>(types.IRegisterUseCase);
   });
 
   afterEach(() => {
     container = null;
   });
 
-  it("Should throw a DomainServiceException: Missing user", async () => {
+  it("Should throw a DomainValidationException: invalid email", async () => {
     await expect(
-      loginUseCase.execute({ email: "", password: "" })
-    ).rejects.toBeInstanceOf(DomainServiceException);
+      registerUseCase.execute({ email: "awesome", password: "1223312321" })
+    ).rejects.toBeInstanceOf(DomainValidationException);
   });
 
-  it("Should throw a DomainServiceException: invalid password", async () => {
+  it("Should throw a DomainValidationException: invalid password length", async () => {
     await expect(
-      loginUseCase.execute({ ...credentials, password: "invalid" })
-    ).rejects.toBeInstanceOf(DomainServiceException);
+      registerUseCase.execute({ email: "awesome@mail.com", password: "234" })
+    ).rejects.toBeInstanceOf(DomainValidationException);
   });
 
-  it("Should return an authentication token", async () => {
-    const data = await loginUseCase.execute(credentials);
-    expect(data).toHaveProperty("token");
-    expect(data.token.length).toBeGreaterThan(16);
+  it("Should return true on successfuly creating user", async () => {
+    const res = await registerUseCase.execute(credentials);
+    expect(res).toBeTruthy();
   });
 });

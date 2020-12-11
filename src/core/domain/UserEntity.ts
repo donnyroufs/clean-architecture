@@ -3,7 +3,7 @@ import { DomainValidationException } from "@core/common/exception/DomainValidati
 import { BaseEntity } from "./BaseEntity";
 
 export class User extends BaseEntity implements IUserEntity {
-  public id: number;
+  public id?: number;
   public email: string;
   public password?: string;
   private hashed: boolean;

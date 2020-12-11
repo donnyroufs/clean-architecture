@@ -4,4 +4,5 @@ export enum types {
   IDatabase = "IDatabase",
   IAuthService = "IAuthService",
   ILoginUseCase = "ILoginUseCase",
+  IRegisterUseCase = "IRegisterUseCase",
 }

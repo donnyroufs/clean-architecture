@@ -35,4 +35,12 @@ export class MockedDatabase implements IDatabase {
       (entity: any) => entity.email === query.email
     );
   }
+
+  async createOne(query: any): Promise<any> {
+    this.data[this.entity].push({
+      query,
+      created_at: new Date(),
+      updated_at: new Date(),
+    });
+  }
 }
