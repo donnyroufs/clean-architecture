@@ -1,10 +1,11 @@
-import { BaseController } from "./BaseController";
 import * as express from "express";
+import { BaseController } from "./BaseController";
 
-import { UserLoginRequestDto } from "../../../core/application/dto/UserLoginRequestDto";
-import { UserService } from "../../../core/application/service/UserService";
+import { UserLoginRequestDto } from "@app/dto/UserLoginRequestDto";
+import { UserService } from "@app/service/UserService";
 import { inject } from "inversify";
-import { types } from "../../../core/common/types";
+import { types } from "@core/common/types";
+
 import {
   controller,
   httpPost,
@@ -34,5 +35,19 @@ export class UserController extends BaseController {
     });
 
     res.status(201).json(loginResult);
+  }
+
+  @httpPost("/register")
+  async register(
+    @requestBody() body: UserLoginRequestDto,
+    @response() res: express.Response
+  ) {
+    if (!body.email || !body.password) {
+      this.badRequest();
+    }
+
+    const result = await this.userService.register(body);
+
+    res.status(201).json(result);
   }
 }

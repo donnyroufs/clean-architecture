@@ -30,7 +30,7 @@ export class RegisterUseCase implements IRegisterUseCase {
 
     user.password = hashedPassword;
 
-    const created = this.userRepository.createOne(user);
+    const created = await this.userRepository.createOne(user);
 
     if (!created) {
       throw new DomainServiceException(
