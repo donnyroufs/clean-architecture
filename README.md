@@ -22,7 +22,8 @@ I am starting to get bored and irritated by my MVC like architectures for a REST
 - [x] Revisit entire folder structure, compare with others.
 - [x] Write tests for @application
 - [x] implement the token/auth service so that we can login
-- [ ] Add Register and Logout usecase
+- [x] Add Register use case
+- [ ] Add Logout use case
 - [ ] Add auth middleware
 - [ ] Add Post entity
 - [ ] Basic Crud
