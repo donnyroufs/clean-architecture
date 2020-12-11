@@ -16,7 +16,8 @@
       "@domain/*": ["src/core/domain/*"],
       "@infra/*": ["src/infrastructure/*"],
       "@config/*": ["src/configuration/*"],
-      "@presentation/*": ["src/presentation/*"]
+      "@presentation/*": ["src/presentation/*"],
+      "@utils/*": ["src/utils/*"]
     }
   },
   "include": ["./**/*"]

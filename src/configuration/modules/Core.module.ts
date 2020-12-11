@@ -1,3 +1,5 @@
+import { MockedDatabase } from "@utils/mocks/MockedDatabase";
+import { Database } from "@infra/drivers/database/Database";
 import { ContainerModule } from "inversify";
 
 import { LoginUseCase } from "@core/application/usecase/LoginUseCase";
@@ -8,10 +10,8 @@ import { types } from "@core/common/types";
 import { IDatabase } from "@infra/interface/IDatabase";
 import { AuthService } from "@infra/service/AuthService";
 
-import { MockedDatabase } from "@presentation/api/__tests__/mocks/MockedDatabase";
-
 const Core = new ContainerModule((bind) => {
-  bind<IDatabase>(types.IDatabase).toConstructor(MockedDatabase);
+  bind<IDatabase>(types.IDatabase).toConstructor(Database);
   bind<ILoginUseCase>(types.ILoginUseCase).to(LoginUseCase).inSingletonScope();
   bind<IAuthService>(types.IAuthService).to(AuthService).inSingletonScope();
 });

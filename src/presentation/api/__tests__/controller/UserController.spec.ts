@@ -1,6 +1,6 @@
 import "reflect-metadata";
 
-import { MockedDatabase } from "./../mocks/MockedDatabase";
+import { MockedDatabase } from "@utils/mocks/MockedDatabase";
 import { IDatabase } from "@infra/interface/IDatabase";
 import { Core } from "@config/container";
 import { Container } from "inversify";
