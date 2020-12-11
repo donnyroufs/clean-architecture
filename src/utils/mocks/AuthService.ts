@@ -16,4 +16,8 @@ export class AuthService implements IAuthService {
   public comparePasswords(password: string, hashed_password: string) {
     return password === hashed_password;
   }
+
+  public generateHashedPassword(password: string) {
+    return password;
+  }
 }
